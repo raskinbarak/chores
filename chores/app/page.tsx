@@ -4,7 +4,7 @@ interface person {
   id: number;
   first_name: string;
   last_name: string;
-  birthdate: Date;
+  birthdate: string;
 }
 
 export default async function Home() {
@@ -49,8 +49,7 @@ export default async function Home() {
               <ul className="flex flex-col gap-3">
                 {persons.map((p: person) => (
                   <h1 key={p.id}>
-                    {p.first_name} {p.last_name} was born on{" "}
-                    {p.birthdate.getDate()}
+                    {p.first_name} {p.last_name} was born on {p.birthdate}
                   </h1>
                 ))}
               </ul>
