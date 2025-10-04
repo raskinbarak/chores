@@ -1,5 +1,12 @@
 import { Container } from "@/components/ui/container";
 
+interface person {
+  id: number;
+  first_name: string;
+  last_name: string;
+  birthdate: Date;
+}
+
 export default async function Home() {
   const base =
     process.env.NEXT_PUBLIC_BASE_URL ??
@@ -40,9 +47,10 @@ export default async function Home() {
               <p className="text-sm text-foreground/80">No persons found.</p>
             ) : (
               <ul className="flex flex-col gap-3">
-                {persons.map((p: any) => (
+                {persons.map((p: person) => (
                   <h1 key={p.id}>
-                    {p.first_name} {p.last_name} was born on {p.birthdate}
+                    {p.first_name} {p.last_name} was born on{" "}
+                    {p.birthdate.getDate()}
                   </h1>
                 ))}
               </ul>
