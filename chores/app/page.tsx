@@ -40,7 +40,7 @@ export default async function Home() {
               <p className="text-sm text-foreground/80">No persons found.</p>
             ) : (
               <ul className="flex flex-col gap-3">
-                {persons.map((p) => (
+                {persons.map((p: any) => (
                   <h1 key={p.id}>
                     {p.first_name} {p.last_name} was born on {p.birthdate}
                   </h1>
