@@ -7,7 +7,7 @@ export default function Home() {
         {/* Hero / Intro */}
         <section className="w-full flex flex-col gap-4">
           <h1 className="text-3xl sm:text-4xl font-extrabold">
-            Simple chores. Less friction.
+            Naama Libi Dolev. The Best.
           </h1>
           <p className="text-sm text-foreground/80 max-w-2xl">
             A lightweight place to track tasks and routines. Fast to use, easy
