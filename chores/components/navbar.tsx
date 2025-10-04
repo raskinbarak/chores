@@ -1,6 +1,5 @@
 import Link from "next/link";
 import React from "react";
-import { AuthButton } from "@/components/auth-button";
 
 export const Navbar = () => {
   return (
@@ -15,7 +14,6 @@ export const Navbar = () => {
           </span>
         </div>
         <div className="flex items-center gap-3">
-          <AuthButton />
         </div>
       </div>
     </nav>
