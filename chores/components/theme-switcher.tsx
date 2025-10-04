@@ -14,7 +14,9 @@ import { useEffect, useState } from "react";
 
 const ThemeSwitcher = () => {
   const [mounted, setMounted] = useState(false);
-  const { theme, setTheme } = useTheme();
+  // theme is the preference ("light" | "dark" | "system")
+  // resolvedTheme is the effective theme ("light" | "dark") when using system
+  const { theme, setTheme, resolvedTheme } = useTheme();
 
   // useEffect only runs on the client, so now we can safely show the UI
   useEffect(() => {
@@ -31,30 +33,19 @@ const ThemeSwitcher = () => {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" size={"sm"}>
-          {theme === "light" ? (
-            <Sun
-              key="light"
-              size={ICON_SIZE}
-              className={"text-muted-foreground"}
-            />
-          ) : theme === "dark" ? (
-            <Moon
-              key="dark"
-              size={ICON_SIZE}
-              className={"text-muted-foreground"}
-            />
+          {/* show resolved icon when using "system" so icon reflects actual mode */}
+          {theme === "light" || (theme === "system" && resolvedTheme === "light") ? (
+            <Sun key="light" size={ICON_SIZE} className="text-muted-foreground" />
+          ) : theme === "dark" || (theme === "system" && resolvedTheme === "dark") ? (
+            <Moon key="dark" size={ICON_SIZE} className="text-muted-foreground" />
           ) : (
-            <Laptop
-              key="system"
-              size={ICON_SIZE}
-              className={"text-muted-foreground"}
-            />
+            <Laptop key="system" size={ICON_SIZE} className="text-muted-foreground" />
           )}
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-content" align="start">
         <DropdownMenuRadioGroup
-          value={theme}
+          value={theme ?? "system"}
           onValueChange={(e) => setTheme(e)}
         >
           <DropdownMenuRadioItem className="flex gap-2" value="light">
