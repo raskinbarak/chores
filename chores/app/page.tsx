@@ -12,7 +12,7 @@ export default async function Home() {
     process.env.NEXT_PUBLIC_BASE_URL ??
     `http://localhost:${process.env.PORT ?? 3000}`;
   const apiUrl = new URL("/api", base);
-  const res = await fetch(apiUrl.toString());
+  const res = await fetch(apiUrl.toString(), { cache: "no-store" });
   let persons = [];
   let error = null;
   if (res.ok) {
